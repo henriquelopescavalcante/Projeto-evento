@@ -1,0 +1,30 @@
+{% extends "inicio.html" %}
+
+{% load bootstrap5 %}
+
+{% block conteudo %}
+<div class="p-4 p-md-5 mb-4 text-white rounded bg-dark">
+    <div class="col-12 px-0">
+      <h1 class="display-4 fst-italic">Quais eventos você tem interesse?</h1>
+    </div>
+  </div>
+
+  <div class="row mb-2">
+    <div class="col-md-6 offset-md-3">
+        {% if sucesso %}
+        <p class="alert alert-success">
+            Interesse enviado com sucesso!
+        </p>
+        {% else %}
+        <form action="" method="post" novalidate>
+            {% csrf_token %}
+            {% bootstrap_field form.nome %}
+            {% bootstrap_field form.email %}
+            {% bootstrap_field form.interesse %}
+            {% bootstrap_field form.observacoes %}
+            <button class="btn btn-primary" type="submit">Enviar</button>
+        </form>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}
